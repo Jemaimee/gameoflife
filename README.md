@@ -3,7 +3,7 @@
 
 ### Features  
 - Click to add or remove cells on the grid.  
-- Pan the view using arrow keys to explore large patterns.  
+- Pan the view using arrow keys or draging the mouse with right click.  
 - Pause and resume the simulation with the spacebar.  
 - Increase or decrease simulation speed with 'E' and 'A' keys.  
 
