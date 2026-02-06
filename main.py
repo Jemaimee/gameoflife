@@ -14,7 +14,7 @@ clock = pygame.time.Clock()
 running = True
 paused = True
 last_advance = datetime.now()
-cooldown = 1
+cooldown = 0.1
 
 while running:
     
@@ -53,9 +53,9 @@ while running:
                 elif not paused:
                     paused = True
             if keys[pygame.K_e]:
-                cooldown += 0.1
+                cooldown = cooldown * 0.9
             if keys[pygame.K_a]:
-                cooldown -= 0.1
+                cooldown = cooldown / 0.9
         if event.type == pygame.MOUSEWHEEL:
             if event.y == 1:
                 camera.zoom_out()
