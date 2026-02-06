@@ -25,6 +25,8 @@ while running:
             cell_coordinate = camera.screen_to_cell(*event.pos)
             if cell_coordinate not in game.alive_cells:
                 game.add_cell(cell_coordinate)
+            else:
+                game.remove_cell(cell_coordinate)
         if event.type == pygame.MOUSEMOTION and event.buttons[0] == 1:
             cell_coordinate = camera.screen_to_cell(*event.pos)
             if cell_coordinate not in game.alive_cells:
