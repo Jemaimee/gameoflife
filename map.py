@@ -14,10 +14,10 @@ class Render():
 
     def draw_grid(self):
         
-        for x in range(self.screen_width // self.camera.cell_size):
+        for x in range((self.screen_width // self.camera.cell_size) + 1):
             pygame.draw.line(self.screen, "#747474", start_pos=((x * self.camera.cell_size), 0), end_pos=((x * self.camera.cell_size), self.screen_height))
         
-        for y in range(self.screen_height // self.camera.cell_size):
+        for y in range((self.screen_height // self.camera.cell_size) + 1):
             pygame.draw.line(self.screen, "#747474", start_pos=(0, (y * self.camera.cell_size)), end_pos=(self.screen_width, (y * self.camera.cell_size)))
 
     def draw_cells(self, alive_cells):

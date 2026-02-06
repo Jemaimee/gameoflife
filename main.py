@@ -29,16 +29,16 @@ while running:
             cell_coordinate = camera.screen_to_cell(*event.pos)
             if cell_coordinate not in game.alive_cells:
                 game.add_cell(cell_coordinate)
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_UP]:
+            camera.y -= 1
+        if keys[pygame.K_DOWN]:
+            camera.y += 1
+        if keys[pygame.K_LEFT]:
+            camera.x -= 1
+        if keys[pygame.K_RIGHT]:
+            camera.x += 1
         if event.type == pygame.KEYDOWN:
-            keys = pygame.key.get_pressed()
-            if keys[pygame.K_UP]:
-                camera.y -= 1
-            if keys[pygame.K_DOWN]:
-                camera.y += 1
-            if keys[pygame.K_LEFT]:
-                camera.x -= 1
-            if keys[pygame.K_RIGHT]:
-                camera.x += 1
             if keys[pygame.K_SPACE]:
                 if paused:
                     paused = False
@@ -48,6 +48,11 @@ while running:
                 cooldown += 0.1
             if keys[pygame.K_a]:
                 cooldown -= 0.1
+        if event.type == pygame.MOUSEWHEEL:
+            if event.y == 1:
+                camera.zoom_out()
+            elif event.y == -1:
+                camera.zoom_in()
     
     now = datetime.now()
     timedelta = now - last_advance

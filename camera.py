@@ -12,3 +12,8 @@ class Camera:
         screen_x = (cell_x - self.x) * self.cell_size
         screen_y = (cell_y - self.y) * self.cell_size
         return int(screen_x), int(screen_y)
+    def zoom_in(self):
+        if self.cell_size > 10:
+            self.cell_size -= 10
+    def zoom_out(self):
+        self.cell_size += 10
