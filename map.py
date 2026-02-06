@@ -10,7 +10,7 @@ class Render():
         self.camera = camera
 
         pygame.init()
-        self.screen = pygame.display.set_mode((1000, 1000))
+        self.screen = pygame.display.set_mode((self.screen_width, self.screen_height))
 
     def draw_grid(self):
         

@@ -29,16 +29,22 @@ while running:
             cell_coordinate = camera.screen_to_cell(*event.pos)
             if cell_coordinate not in game.alive_cells:
                 game.add_cell(cell_coordinate)
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_UP]:
-            camera.y -= 1
-        if keys[pygame.K_DOWN]:
-            camera.y += 1
-        if keys[pygame.K_LEFT]:
-            camera.x -= 1
-        if keys[pygame.K_RIGHT]:
-            camera.x += 1
+        elif event.type == pygame.MOUSEMOTION and event.buttons[2] == 1:
+            x, y = event.rel
+            
+            camera.move(-x, -y)
+
+
         if event.type == pygame.KEYDOWN:
+            keys = pygame.key.get_pressed()
+            if keys[pygame.K_UP]:
+                camera.move(0, -1)
+            if keys[pygame.K_DOWN]:
+                camera.move(0, 1)
+            if keys[pygame.K_LEFT]:
+                camera.move(-1, 0)
+            if keys[pygame.K_RIGHT]:
+                camera.move(1, 0)
             if keys[pygame.K_SPACE]:
                 if paused:
                     paused = False
