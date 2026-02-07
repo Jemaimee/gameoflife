@@ -1,6 +1,6 @@
 import pygame
 from datetime import datetime, timedelta
-from map import Render
+from render import Render
 from cells import Game
 from camera import Camera
 
@@ -17,7 +17,7 @@ last_advance = datetime.now()
 cooldown = 0.1
 
 while running:
-    
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -33,9 +33,8 @@ while running:
                 game.add_cell(cell_coordinate)
         elif event.type == pygame.MOUSEMOTION and event.buttons[2] == 1:
             x, y = event.rel
-            
-            camera.move(-x, -y)
 
+            camera.move(-x, -y)
 
         if event.type == pygame.KEYDOWN:
             keys = pygame.key.get_pressed()
@@ -61,13 +60,12 @@ while running:
                 camera.zoom_out()
             elif event.y == -1:
                 camera.zoom_in()
-    
+
     now = datetime.now()
     timedelta = now - last_advance
     if timedelta.total_seconds() > cooldown and not paused:
         game.get_next_state()
         last_advance = datetime.now()
-        
 
     render.draw(game.alive_cells)
     clock.tick(120)
